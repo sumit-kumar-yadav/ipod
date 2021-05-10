@@ -1,11 +1,11 @@
 import './App.css';
-import Display from './Display';
+import Screen from './Screen';
 import Controls from './Controls';
 
 function App() {
   return (
     <div id="iPod-app">
-      <Display />
+      <Screen />
       <Controls />
     </div>
   );

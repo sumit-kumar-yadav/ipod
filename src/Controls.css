@@ -1,8 +1,11 @@
 #controls{
     background-color: rgb(158, 153, 153);
     width: 240px;
+    height: 210px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    border-radius: 0px 0px 7px 7px;
 }
 #wheel{
     width: 200px;

@@ -3,7 +3,7 @@ import './Controls.css'
 import ZingTouch from 'zingtouch';
 
 
-function Controls() {
+function Controls(props) {
   // Similar to componemtDidMount and componentDidUpdate
   useEffect(() => {
     // Event listener to capture rotation around wheel

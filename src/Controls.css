@@ -1,0 +1,33 @@
+#controls{
+    background-color: rgb(158, 153, 153);
+    width: 240px;
+    display: flex;
+    justify-content: center;
+}
+#wheel{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color:aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.buttons{
+    position: absolute;
+    font-weight: 700;
+    font-size: larger;
+    opacity: 0.5;
+}
+#ok-button{
+    background-color: rgb(130, 160, 82);
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: larger;
+}

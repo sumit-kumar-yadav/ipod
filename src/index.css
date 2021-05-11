@@ -10,3 +10,79 @@ body {
   justify-content: center;
   height: 100vh;
 }
+
+
+
+/* Screen component */
+#screen{
+  width: 240px;
+  height: 200px;
+  background-color: white;
+  display: flex;
+  border: 4px solid grey;
+  box-sizing: border-box;
+  border-radius: 7px 7px 0px 0px;
+}
+#side-menu{
+  width: 50%;
+  height: 100%;
+  padding-left: 5px;
+  text-align: left;
+}
+.active{
+  background-color: rgb(118, 118, 212);
+  color: white;
+}
+
+td{
+  position: relative;
+}
+
+td>i{
+  color: white;
+  position: absolute;
+  right: 7px;
+  top: 11px;
+}
+
+
+
+
+
+/* Control Component */
+#controls{
+  background-color: rgb(158, 153, 153);
+  width: 240px;
+  height: 210px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 7px 7px;
+}
+#wheel{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color:aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.buttons{
+  position: absolute;
+  font-weight: 700;
+  font-size: larger;
+  opacity: 0.5;
+}
+#ok-button{
+  background-color: rgb(130, 160, 82);
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: larger;
+}

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './Controls.css'
 import ZingTouch from 'zingtouch';
 
 const rotateEvent = () => {
@@ -55,7 +54,9 @@ function Controls(props) {
           <img className="buttons" src="https://image.flaticon.com/icons/png/128/2404/2404393.png" alt="right" style={ {right: 13, width: 40} }></img>
           <img className="buttons" src="https://image.flaticon.com/icons/png/128/26/26810.png" alt="bottom" style={ {bottom: 13, width: 30, height: 37} }></img>
           {/* <img draggable="false"></img> */}
-          <div id="ok-button">OK</div>
+          <div id="ok-button" onClick={props.handleOk}>
+            <b>OK</b>
+          </div>
         </div>
       </section>
     );

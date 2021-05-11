@@ -9,20 +9,20 @@ function Screen(props) {
             <th>iPod</th>
           </tr>
           <tr>
-            <td>Songs<i className="fas fa-chevron-right"></i></td> 
+            <td>Coverflow<i className="fas fa-chevron-right"></i></td> 
           </tr>
           <tr className="active">
-            <td>Albums<i className="fas fa-chevron-right"></i></td>
+            <td>Music<i className="fas fa-chevron-right"></i></td>
           </tr>
           <tr>
-          <td>Artists<i className="fas fa-chevron-right"></i></td>
+          <td>Games<i className="fas fa-chevron-right"></i></td>
           </tr>
           <tr>
-          <td>Playlists<i className="fas fa-chevron-right"></i></td>
+          <td>Settings<i className="fas fa-chevron-right"></i></td>
           </tr>
         </tbody>
       </table>
-      {/* <div id="display">Display</div> */}
+      <div id="display">Display</div>
     </section>
   );
 }

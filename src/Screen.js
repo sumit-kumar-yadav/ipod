@@ -7,13 +7,28 @@ import Settings from './Settings';
 
 
 function Screen(props) {
+  const {sideMenu, coverflow, music, games, settings} = props.display;
+  const activeItemInMenu = props.activeItemInMenu;
   return (
     <section id="screen">
-      {props.display.sideMenu && <SideMenu />}
-      {props.display.coverflow && <Coverflow />}
-      {props.display.music && <Music />}
-      {props.display.games && <Games />}
-      {props.display.settings && <Settings />}
+      {
+        !sideMenu
+          ?coverflow
+            ?<Coverflow />
+            :music
+              ?<Music />
+              :games
+                ?<Games />
+                :<Settings />
+          :<SideMenu activeItemInMenu={activeItemInMenu}/>
+      }
+
+      {/* {sideMenu && <SideMenu />}
+      {coverflow && <Coverflow />}
+      {music && <Music />}
+      {games && <Games />}
+      {settings && <Settings />} */}
+
     </section>
   );
 }

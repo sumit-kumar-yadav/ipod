@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Screen from './Screen';
-import Controls from './Controls';
+import Screen from './components/Screen';
+import Controls from './components/Controls';
 import ZingTouch from 'zingtouch';
 
 
@@ -12,7 +12,9 @@ class App extends React.Component{
       display: {
         'sideMenu': true, 'coverflow': false, 'music': false, 'games': false, 'settings': false
       },
-      activeItemInMenu: 'coverflow'
+      activeItemInMenu: 'coverflow',
+      toShowInMusicComponent: 'musicMenu',
+      activeItemInMusic: 'allSongs'
     }
   }
 
@@ -24,7 +26,7 @@ class App extends React.Component{
       
       myRegion.bind(rotateArea, 'rotate', function(event){
         // console.log('distanceFromLast : ', event.detail.distanceFromLast);
-        const menuLists = document.querySelectorAll('#side-menu tr');
+        const menuLists = document.querySelectorAll('tr');
   
         // If rotated in clockwise direction
         if(event.detail.distanceFromLast > 1){
@@ -63,18 +65,16 @@ class App extends React.Component{
   // If ok button is clicked, mark the component screen which is selected as true
   handleOk = () => {
     const activeMenu = document.querySelector('#side-menu .active');
+    const activeItemInMusic = document.querySelector('#music-menu .active');
+
     if(activeMenu){
       const optionSelected = activeMenu.getAttribute('data-option');
-      // console.log('optionSelected is : ', optionSelected, typeof(optionSelected));
 
       const display = this.state.display;
       // Mark all the display as false
       for(let key in display){  // Note here 'in' and not 'of'
         display[key] = false;
       }
-                // Other method to change the value of object iteratively
-      // Object.keys(display).forEach(function(key){ display[key] = false });
-      // Object.getOwnPropertyNames(display).forEach(function(key){ display[key] = false });
 
       // Then mark true to the option selected
       display[optionSelected] = true;
@@ -84,20 +84,40 @@ class App extends React.Component{
         activeItemInMenu: optionSelected
       });
     }
+    else if(activeItemInMusic){
+      const optionSelected = activeItemInMusic.getAttribute('data-option');
+      this.setState({
+        toShowInMusicComponent: optionSelected,
+        activeItemInMusic: optionSelected
+      });
+    }
   }
 
   // If menu button is clicked, go back
   handleMenuClick = () => {
-    const display = this.state.display;
-    // Mark all the display as false
-    for(let key in display){  // Note here 'in' and not 'of'
-      display[key] = false;
+    if(this.state.toShowInMusicComponent === 'musicMenu'){
+      const display = this.state.display;
+      // Mark all the display as false
+      for(let key in display){  // Note here 'in' and not 'of'
+        display[key] = false;
+      }
+
+      // Then mark true to the option selected
+      display.sideMenu = true;
+
+      this.setState({ 
+        display: display,
+        activeItemInMusic: 'allSongs'
+      });
     }
-
-    // Then mark true to the option selected
-    display.sideMenu = true;
-
-    this.setState({ display });
+    else{ // Means toShowInMusicComponent != 'musicMenu'. Set it 'musicMenu'
+      console.log("this.state is: ", this.state);
+      const optionSelected = this.state.toShowInMusicComponent;
+      this.setState({ 
+        toShowInMusicComponent: 'musicMenu',
+        activeItemInMusic: optionSelected
+      });
+    }
 
   }
 
@@ -108,6 +128,8 @@ class App extends React.Component{
         <Screen 
           display={this.state.display}
           activeItemInMenu={this.state.activeItemInMenu}
+          toShowInMusicComponent={this.state.toShowInMusicComponent}
+          activeItemInMusic={this.state.activeItemInMusic}
         />
         <Controls 
           handleOk={this.handleOk}

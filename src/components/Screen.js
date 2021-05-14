@@ -4,6 +4,7 @@ import Coverflow from './Coverflow';
 import Music from './Music';
 import Games from './Games';
 import Settings from './Settings';
+import './css/screen.css';
 
 
 class Screen extends React.Component{
@@ -33,6 +34,11 @@ class Screen extends React.Component{
     
     return (
       <section id="screen">
+      <div id="top-bar">
+        <div id="battery">
+          <i className="fas fa-battery-three-quarters"></i>
+        </div>
+      </div>
       {
         !sideMenu
           ?coverflow

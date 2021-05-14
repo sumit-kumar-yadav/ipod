@@ -5,7 +5,9 @@ function SideMenu(props) {
     const activeItemInMenu = props.activeItemInMenu;
 
     // Similar to componemtDidMount and componentDidUpdate of a class
-  useEffect(() => {
+    useEffect(() => {
+        
+      // Add active class to a particular option
       const menuItems = document.querySelectorAll('#side-menu tr');
       for(let item of menuItems){
           if(item.getAttribute('data-option') === activeItemInMenu){
@@ -13,25 +15,25 @@ function SideMenu(props) {
           }
       }
 
-  });
+    });
 
   return (
     <table id="side-menu">
         <tbody>
         <tr>
-            <th>iPod</th>
+            <th className="table-heading">iPod <i className="fas fa-home"></i></th>
         </tr>
         <tr data-option="coverflow">
-            <td>Coverflow<i className="fas fa-chevron-right"></i></td> 
+            <td className="table-item">Coverflow<i className="fas fa-chevron-right"></i></td> 
         </tr>
         <tr data-option="music">
-            <td>Music<i className="fas fa-chevron-right"></i></td>
+            <td className="table-item">Music<i className="fas fa-chevron-right"></i></td>
         </tr>
         <tr data-option="games">
-            <td>Games<i className="fas fa-chevron-right"></i></td>
+            <td className="table-item">Games<i className="fas fa-chevron-right"></i></td>
         </tr>
         <tr data-option="settings">
-            <td>Settings<i className="fas fa-chevron-right"></i></td>
+            <td className="table-item">Settings<i className="fas fa-chevron-right"></i></td>
         </tr>
         </tbody>
     </table>

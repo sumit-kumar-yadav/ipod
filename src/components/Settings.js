@@ -1,11 +1,13 @@
 
 function Settings(props) {
-    return (
+  return (
+    <div id="settings">
       <div>
-          <h1>Settings</h1>
+        <i className="fas fa-cog"></i>
       </div>
-    );
-  }
-  
-  export default Settings;
+    </div>
+  );
+}
+
+export default Settings;
   

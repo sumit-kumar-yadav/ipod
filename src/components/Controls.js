@@ -1,9 +1,11 @@
+import './css/controls.css';
 
 function Controls(props) {
     return (
       <section id="controls" onClick={props.rotateEvent}>
         <div id="wheel">
           <span 
+            id="menu-button"
             className="buttons" 
             style={ {top: 20} }
             onClick={props.handleMenuClick}

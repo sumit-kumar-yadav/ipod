@@ -1,11 +1,16 @@
+import coverflowPic from './images/coverflow.png'
 
 function Coverflow(props) {
     return (
-      <div>
-          <h1>Coverflow</h1>
+      <div id="coverflow">
+          <img style={style} src={coverflowPic} alt="Coverflow"></img>
       </div>
     );
   }
   
   export default Coverflow;
   
+  const style = {
+    width: 100.5 + '%',
+    height: 185
+  }

@@ -18,23 +18,25 @@ class App extends React.Component{
     }
   }
 
+  // Handle the rotate event fired from the control component
   rotateEvent = () => {
+
     // Event listener to capture rotation around wheel
-  
       const myRegion = new ZingTouch.Region(document.getElementById('controls'));
       const rotateArea = document.getElementById('wheel');
       
       myRegion.bind(rotateArea, 'rotate', function(event){
-        // console.log('distanceFromLast : ', event.detail.distanceFromLast);
         const menuLists = document.querySelectorAll('tr');
+        const distanceFromLast = event.detail.distanceFromLast;
   
         // If rotated in clockwise direction
-        if(event.detail.distanceFromLast > 1){
+        if(distanceFromLast > 1){
           for(let i = 1; i < menuLists.length; i++){
             // If list contains active class then remove it and add it to the next list
             if(menuLists[i].classList.contains('active') === true){
               menuLists[i].classList.remove('active');
               
+              // Before adding check whether it's the last item/list
               if(i === menuLists.length-1){
                 menuLists[1].classList.add('active');
               }else{
@@ -44,12 +46,13 @@ class App extends React.Component{
           }
         }
         // else if rotated in anti-clockwise direction
-        else if(event.detail.distanceFromLast < -1){
+        else if(distanceFromLast < -1){
           for(let i = menuLists.length-1; i > 0; i--){
             // If list contains active class then remove it and add it to the next list
             if(menuLists[i].classList.contains('active') === true){
               menuLists[i].classList.remove('active');
 
+              // Before adding check whether it's the first item/list
               if(i === 1){
                 menuLists[menuLists.length-1].classList.add('active');
               }else{
@@ -62,11 +65,12 @@ class App extends React.Component{
   }
   
 
-  // If ok button is clicked, mark the component screen which is selected as true
+  // If ok button is clicked, mark the component screen which is selected as true and open the selected component
   handleOk = () => {
     const activeMenu = document.querySelector('#side-menu .active');
     const activeItemInMusic = document.querySelector('#music-menu .active');
 
+    // If the active item is of SideMenu component
     if(activeMenu){
       const optionSelected = activeMenu.getAttribute('data-option');
 
@@ -79,11 +83,13 @@ class App extends React.Component{
       // Then mark true to the option selected
       display[optionSelected] = true;
 
+      // Set state to render the components to open the relevant component
       this.setState({
         display: display,
         activeItemInMenu: optionSelected
       });
     }
+    // If the active item is of MusicMenu component
     else if(activeItemInMusic){
       const optionSelected = activeItemInMusic.getAttribute('data-option');
       this.setState({
@@ -95,6 +101,8 @@ class App extends React.Component{
 
   // If menu button is clicked, go back
   handleMenuClick = () => {
+
+    // If component of SideMene was opened, then go back to SideMenu
     if(this.state.toShowInMusicComponent === 'musicMenu'){
       const display = this.state.display;
       // Mark all the display as false
@@ -110,8 +118,8 @@ class App extends React.Component{
         activeItemInMusic: 'allSongs'
       });
     }
+    // If component of MusicMene was opened, then go back to MusicMenu
     else{ // Means toShowInMusicComponent != 'musicMenu'. Set it 'musicMenu'
-      console.log("this.state is: ", this.state);
       const optionSelected = this.state.toShowInMusicComponent;
       this.setState({ 
         toShowInMusicComponent: 'musicMenu',
@@ -122,14 +130,14 @@ class App extends React.Component{
   }
 
   render(){
-    // const {screens, display} = this.state;
+    const { display, activeItemInMenu, toShowInMusicComponent, activeItemInMusic } = this.state;
     return (
       <div id="iPod-app">
         <Screen 
-          display={this.state.display}
-          activeItemInMenu={this.state.activeItemInMenu}
-          toShowInMusicComponent={this.state.toShowInMusicComponent}
-          activeItemInMusic={this.state.activeItemInMusic}
+          display={display}
+          activeItemInMenu={activeItemInMenu}
+          toShowInMusicComponent={toShowInMusicComponent}
+          activeItemInMusic={activeItemInMusic}
         />
         <Controls 
           handleOk={this.handleOk}

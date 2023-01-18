@@ -1,4 +1,7 @@
 import './css/controls.css';
+import leftArrow from './images/left-arrow.png';
+import rightArrow from './images/right-arrow.png';
+import bottomArrow from './images/arrow-pointing-downwards.png';
 
 function Controls(props) {
     return (
@@ -13,15 +16,15 @@ function Controls(props) {
             Menu
           </span>
           <img className="buttons" draggable="false"
-            src="https://image.flaticon.com/icons/png/128/2404/2404395.png" alt="left" 
+            src={leftArrow} alt="left" 
             style={ {left: 13, width: 40} }>
           </img>
           <img className="buttons" draggable="false"
-            src="https://image.flaticon.com/icons/png/128/2404/2404393.png" alt="right" 
+            src={rightArrow} alt="right" 
             style={ {right: 13, width: 40} }>
           </img>
           <img className="buttons" draggable="false"
-            src="https://image.flaticon.com/icons/png/128/26/26810.png" alt="bottom" 
+            src={bottomArrow} alt="bottom" 
             style={ {bottom: 13, width: 30, height: 37} }>
           </img>
           {/* <img draggable="false"></img> */}
